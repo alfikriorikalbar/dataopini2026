@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data dan Dokumen Penilaian Maladministrasi 2026 - Perwakilan Ombudsman RI Provinsi Kalimantan Barat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #4f46e5;
+            --accent-hover: #4338ca;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #cbd5e1;
+            --danger: #dc2626;
+            --danger-bg: #fef2f2;
+            --success: #16a34a;
+            --success-bg: #f0fdf4;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        header h1 {
+            font-size: clamp(22px, 4vw, 32px);
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: clamp(16px, 2.5vw, 20px);
+            color: #c7d2fe;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        .app-container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 28px 16px;
+            display: grid;
+            gap: 24px;
+        }
+
+        .filter-section {
+            background: var(--surface);
+            padding: 20px 24px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px 12px 46px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            font-size: 15px;
+            font-weight: 500;
+            outline: none;
+            background: #f8fafc;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+        }
+
+        .quick-nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .nav-chip {
+            background: #e0e7ff;
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        .nav-chip:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .content-section {
+            background: var(--surface);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .section-header i {
+            font-size: 22px;
+            color: var(--accent);
+            background: #e0e7ff;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .section-header h2 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .data-table th, .data-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+
+        .data-table th {
+            background-color: #f8fafc;
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 15px;
+        }
+
+        .data-table tr:hover {
+            background-color: #fbfcfe;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 14px;
+        }
+
+        .info-card {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-card span {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 15px;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* KESERAGAMAN MUTLAK UKURAN, BENTUK, DAN LEBAR TOMBOL & BADGE */
+        .link-btn, .badge-danger {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 38px;
+            min-width: 130px;
+            padding: 0 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid transparent;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .link-btn {
+            background-color: #e0e7ff;
+            color: var(--accent);
+        }
+
+        .link-btn:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .link-btn.secondary {
+            background-color: var(--success-bg);
+            color: var(--success);
+            border-color: #bbf7d0;
+        }
+
+        .link-btn.secondary:hover {
+            background-color: var(--success);
+            color: white;
+        }
+
+        /* Badge Belum Mengirim (Warna merah tegas untuk teks dan ikon) */
+        .badge-danger {
+            background-color: var(--danger-bg);
+            color: var(--danger) !important;
+            border-color: #fecaca;
+            cursor: default;
+        }
+
+        .badge-danger i {
+            color: var(--danger) !important;
+        }
+
+        .service-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            border: 1px solid #ddd6fe;
+            border-radius: 14px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .service-card.green {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-color: #bbf7d0;
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-card p {
+            font-size: 15px;
+            color: var(--text-main);
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        footer {
+            background: var(--primary);
+            color: #94a3b8;
+            text-align: center;
+            padding: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: auto;
+        }
+
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--primary);
+            color: #fff;
+            text-align: center;
+            border-radius: 10px;
+            padding: 14px 20px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 15px;
+            font-weight: 600;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadeInOut 2.5s ease-in-out;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; bottom: 15px; }
+            15% { opacity: 1; bottom: 30px; }
+            85% { opacity: 1; bottom: 30px; }
+            100% { opacity: 0; bottom: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Data dan Dokumen Penilaian Maladministrasi 2026</h1>
+        <p>Perwakilan Ombudsman RI Provinsi Kalimantan Barat</p>
+    </header>
+
+    <div class="app-container">
+
+        <div class="filter-section">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Cari instansi, wilayah, atau sektor..." onkeyup="filterContent()">
+            </div>
+            <div class="quick-nav">
+                <a href="#section-pemda" class="nav-chip">PEMDA</a>
+                <a href="#section-polres" class="nav-chip">POLRES</a>
+                <a href="#section-kantah" class="nav-chip">KANTAH</a>
+                <a href="#section-imipas" class="nav-chip">IMIPAS</a>
+                <a href="#section-layanan" class="nav-chip">Form &amp; Website</a>
+            </div>
+        </div>
+
+        <!-- PEMDA Section -->
+        <section class="content-section" id="section-pemda">
+            <div class="section-header">
+                <i class="fa-solid fa-landmark"></i>
+                <h2>Pemerintah Daerah (PEMDA)</h2>
+            </div>
+            <div class="table-responsive">
+                <table class="data-table" id="pemdaTable">
+                    <thead>
+                        <tr>
+                            <th>Daerah</th>
+                            <th>Disdik</th>
+                            <th>Dinsos</th>
+                            <th>PUPR</th>
+                            <th>RSUD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Pemprov Kalbar</strong></td>
+                            <td><a href="https://drive.google.com/drive/folders/1AGLjiUrj3t0URrnkLoayl3C43BOsIF2j" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/u/0/folders/1kIiNjZCpfMVMfg3GcUTGGMHGhi2Sl-OV" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/u/0/folders/1FlH4DwhJXwcqf9d_WwudNa37g-r1Jmst" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1DmjKkqMbmCJwW6YevuPfZiV_JU5XtNHD" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemkot Pontianak</strong></td>
+                            <td><a href="https://drive.google.com/drive/folders/1xeJw9BxyEpl1if_ixp50u0jmYF81cBry" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1Z6oxtU1M1UIIcEmpalRkcDuNwX-jMwIQ" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1ymvipmOXRo9ope5ik5pg7uHJnqCAqlTX" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1yDyakjg8Y8i0AXNKmfJs6UmU3yMA6fpS" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemkot Singkawang</strong></td>
+                            <td><a href="https://drive.google.com/drive/folders/1s_wdjstGDWd9n8Xf3ce7MXvIpiHMaqlG" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/10zrJYp69EmpD8z5tOmilMM5HxrNBjfNe" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1BS9XVSyCRBkBOCX5nluOELkb3tdeYV8a" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1AtUZcPe46OV4p6ECTOigB7_pQ4R3Pa6K" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemda Kubu Raya</strong></td>
+                            <td><a href="https://drive.google.com/drive/folders/1AtUZcPe46OV4p6ECTOigB7_pQ4R3Pa6K" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1AtUZcPe46OV4p6ECTOigB7_pQ4R3Pa6K" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1MW9nnyhg3NTEA2QTBlGv-3R_lCRFq89F" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://docs.google.com/spreadsheets/d/17qv1G8I1vc6KbtDVHJmcJKOhpX9oMBO_/edit" target="_blank" class="link-btn secondary"><i class="fa-solid fa-file-excel"></i> Sheet</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemda Mempawah</strong></td>
+                            <td><a href="https://drive.google.com/drive/folders/1oR3ZSpg-uG_8lCS76IkDf9TOyJbCAHdM" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1NT8AaM-6hCOrv0HpfbctzZy-PaLZDc-Y" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1NT8AaM-6hCOrv0HpfbctzZy-PaLZDc-Y" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1NT8AaM-6hCOrv0HpfbctzZy-PaLZDc-Y" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemda Sambas</strong></td>
+                            <td><a href="https://drive.google.com/drive/folders/1Q7EnMMQnLhgJHKN5Fm3kQpx7mAjCle9I" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/11oQcCG-IGDsEuTCsdX_xO2DknUMxvDXC" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1CNoaSGwvcmOpclbqCOuK91rGF3Z9LOiI" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/18NMfk5qtr_qOfbPPg_zU9iEFV3wZx-hV" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemda Landak</strong></td>
+                            <td><a href="https://drive.google.com/drive/folders/14ark4-vF1lVNqXlaYZXnacSRE4xfqoFx" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1_6DJqJBl8k0-NdbOJnrS3W3B13YDAEhU" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/19Nl_ODtC0eDVOuwnI-LF-suL6qOYLzq" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/u/0/folders/1EZ_j2f1SNXiZW17GVz8WkLxEr31PzrNT" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemda Bengkayang</strong></td>
+                            <td><a href="https://drive.google.com/drive/folders/1jINtibZYTUuYOMrhvjlxKqgnNgRJK4r7" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1EGmZ2r9qUcUTw5SrHtUsXhR56Ba3_t48" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1HjaLKpUXTC8_QDSvTlZexhPalVtTlLHS" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/15dqFo1d75f_ZXg-n9ajIppjdwQVWhwPr" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemda Ketapang</strong></td>
+                            <td><a href="https://drive.google.com/drive/u/0/folders/12k7Gi6I17tToFu_utIfJWqi118KKy5YR" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1TR5TlW3AphV8LcJafPPnlLXamTO6eiqO" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/18bCSPZMoHYIOQcM1BQMTaYyN8SgsoxGn" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1c8otsBuNmQ4iKsa8KdmdLVQiaP5GeUh0" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemda Kayong Utara</strong></td>
+                            <td><a href="https://drive.google.com/drive/folders/1p2gnz7hfgCdeZX0P8mmlLH786QR6x1zC" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1m5d2cxB78DSJIh4LjBGC7M8UO5CArJqz" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1FlbPcRh2dChyz5RWti7RZk75K_CdZ6s3" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1MPufTFd_sxCCO8JQri36qncAhUk-_1rz" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemda Melawi</strong></td>
+                            <td><a href="https://drive.google.com/drive/u/0/folders/19s9l_sJeirRgVo51UB4wiWbuG-14rGcb" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><span class="badge-danger"><i class="fa-solid fa-triangle-exclamation"></i> Belum Mengirim</span></td>
+                            <td><span class="badge-danger"><i class="fa-solid fa-triangle-exclamation"></i> Belum Mengirim</span></td>
+                            <td><a href="https://drive.google.com/drive/u/0/folders/1C3lGEHZlfXgk45O1qq4k0rufezLeA4rY" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemda Sanggau</strong></td>
+                            <td><a href="https://drive.google.com/drive/u/0/folders/1vl6czQ8zYyrZf9emKGNknA4TrlFMhCAI" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/u/0/folders/1x2OyIGFXeI7bB-xaVm_UYvRN-Vcpv4FH" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1ulnITGdSh-ioGVAFOV0PSn0UYkbVw--t" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://docs.google.com/spreadsheets/d/1C82wGkLbzhJi49p6I4TrHyL5JAIcr_dM/edit" target="_blank" class="link-btn secondary"><i class="fa-solid fa-file-excel"></i> Sheet</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemda Sekadau</strong></td>
+                            <td><span class="badge-danger"><i class="fa-solid fa-triangle-exclamation"></i> Belum Mengirim</span></td>
+                            <td><a href="https://drive.google.com/drive/folders/1ArdDDu5-3gj-Kqpf9f1esj1n522zsXTU" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1e95H7no3FXz0I3h5qKD_7vyZSfJLdRqx" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/u/0/folders/1IQRNAXxZEjswKqy3BDeQouj8GWs-Rfo1" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemda Sintang</strong></td>
+                            <td><a href="https://drive.google.com/drive/u/0/folders/1gnmMKvY8WRqAaocrRDodViB_pulQg5yV" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1yfGfbQ4AfTeqeop3CZN5ZX45HKvelYgX" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1GKxQKzIyRQNUThR7-Dozf0jihSwnc4FM" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/u/0/folders/18OtDX_3iK2D145kPsKCHzqaXvdEyCpJE" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pemda Kapuas Hulu</strong></td>
+                            <td><a href="https://drive.google.com/drive/u/0/folders/1dtopNZxOT9RblgO1EYQf4UcnnzQLFN7O" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/folders/1lCG88Q4aDf07MpLicxt3dIO6m4CVRskU" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/u/0/folders/1kRY44wKHbKe4dee2xQlsflc5QSZyQ_Ig" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                            <td><a href="https://drive.google.com/drive/u/0/folders/1RSt1qOxASkiioMfnGHxZ12vbX4SkxbyE" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- POLRES Section -->
+        <section class="content-section" id="section-polres">
+            <div class="section-header">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h2>Direktori POLRES Se-Kalimantan Barat</h2>
+            </div>
+            <div class="card-grid">
+                <div class="info-card"><span>Polresta Pontianak</span><a href="https://drive.google.com/drive/folders/10AhO51tNi0P9mvusZN1aTwVoE_Mi3Toa?hl=id" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Polres Singkawang</span><a href="https://drive.google.com/drive/folders/1TGPLMeo4gVvteh3m3M120nHz6Zf2eHMe?hl=id" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Polres Kubu Raya</span><a href="https://drive.google.com/drive/folders/1735d4WWPhPEMsXz6WPAWm_o8uvxVnA1L?hl=id" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Polres Mempawah</span><a href="https://drive.google.com/drive/folders/1BFpS0uYI-wMh2nuEZ_7dGBx88ye8ZTBI?hl=id" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Polres Sambas</span><a href="https://drive.google.com/drive/folders/1WHJvUzhEkyLiSIeXMHcK9uFQ2R20r7aJ?hl=id" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Polres Landak</span><span class="badge-danger"><i class="fa-solid fa-triangle-exclamation"></i> Belum Mengirim</span></div>
+                <div class="info-card"><span>Polres Bengkayang</span><a href="https://drive.google.com/drive/folders/1Ph3P4ed0LQsXfzHUTKRP6F9gSnlhha8b?hl=id" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Polres Ketapang</span><a href="https://drive.google.com/drive/folders/1FLbnbfPJA13CyeGlRznGhIWFZApUH6wH" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Polres Kayong Utara</span><a href="https://drive.google.com/drive/folders/1Pb5YCIOQT-fYynsVWeymjh4dUPqgNOEx?hl=id" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Polres Melawi</span><a href="https://drive.google.com/drive/folders/1V6qelPYtOmADfm1gJMulbMthSiPntURi?hl=id" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Polres Sanggau</span><a href="https://drive.google.com/drive/folders/1wnVKnMvIzS_bqVXhdcPVY3ycDqf0cG3H?hl=id" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Polres Sekadau</span><span class="badge-danger"><i class="fa-solid fa-triangle-exclamation"></i> Belum Mengirim</span></div>
+                <div class="info-card"><span>Polres Sintang</span><a href="https://drive.google.com/drive/folders/1guuUzwPA29YmUwAxfN3RAa8dQq9cyot1?hl=id" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Polres Kapuas Hulu</span><a href="https://drive.google.com/drive/folders/1OxWbXFF2ZgORLlsBrd04OOulokiJPRNp?hl=id" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+            </div>
+        </section>
+
+        <!-- KANTAH Section -->
+        <section class="content-section" id="section-kantah">
+            <div class="section-header">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <h2>Direktori KANTAH (Kantor Pertanahan)</h2>
+            </div>
+            <div class="card-grid">
+                <div class="info-card"><span>Kantah Pontianak</span><a href="https://drive.google.com/drive/folders/1KLujswUN3LzP402OypLtfDV4YCbp27AF" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Kantah Singkawang</span><a href="https://drive.google.com/drive/folders/1scI_zhJ-OTnBLTL6kF-zFDIYi9SueZPg" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Kantah Kubu Raya</span><a href="https://drive.google.com/drive/folders/1CEcsbDC9EocK-jEu4BBj0WqCsmSqHa4_" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Kantah Mempawah</span><a href="https://drive.google.com/drive/folders/1ljFyOueFV83yyq2pA2I64wwHTFfHulEw" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Kantah Sambas</span><a href="https://drive.google.com/drive/folders/12yR8LrOPjOkYoRHQnbzDfborN-PO7OyW" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Kantah Landak</span><a href="https://docs.google.com/spreadsheets/d/1WtfriUfwUDJKeoiur0HM7Ll_y5uf2mepQeXmgl_-6Vg/edit" target="_blank" class="link-btn secondary"><i class="fa-solid fa-file-excel"></i> Sheet</a></div>
+                <div class="info-card"><span>Kantah Bengkayang</span><a href="https://drive.google.com/drive/folders/1r2VsCkQCcv123PSmN338dWgK4p750oAr" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Kantah Ketapang</span><a href="https://drive.google.com/file/d/1DdoVGA6v5MKDkqnI_SM19gPfQ004EyBk/view" target="_blank" class="link-btn"><i class="fa-solid fa-file-lines"></i> File</a></div>
+                <div class="info-card"><span>Kantah Kayong Utara</span><a href="https://drive.google.com/drive/folders/1ruPbWTx7x0wHLz2ubSsYL92lfkYsNRJm" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Kantah Sanggau</span><a href="https://drive.google.com/drive/folders/1JoFdm_95bPvX5HI8CQo0YyzB0013tzdm" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Kantah Melawi</span><a href="https://drive.google.com/file/d/1WLELjKyP4oVC2Rju0W1Oeg4drJw_jvio/view" target="_blank" class="link-btn"><i class="fa-solid fa-file-lines"></i> File</a></div>
+                <div class="info-card"><span>Kantah Sekadau</span><a href="https://drive.google.com/file/d/1_MF0UpTSxB16Y1oIDag_bitJ3RKBJf2O/view" target="_blank" class="link-btn"><i class="fa-solid fa-file-lines"></i> File</a></div>
+                <div class="info-card"><span>Kantah Sintang</span><a href="https://drive.google.com/file/d/1OTIRndastb3WYJQCO-iWhcXu4stwAhfB/view" target="_blank" class="link-btn"><i class="fa-solid fa-file-lines"></i> File</a></div>
+                <div class="info-card"><span>Kantah Kapuas Hulu</span><a href="https://docs.google.com/spreadsheets/d/10ytvsj_FeiXO8fodN-uNRiCO7Nvg1bBF/edit" target="_blank" class="link-btn secondary"><i class="fa-solid fa-file-excel"></i> Sheet</a></div>
+            </div>
+        </section>
+
+        <!-- IMIPAS Section -->
+        <section class="content-section" id="section-imipas">
+            <div class="section-header">
+                <i class="fa-solid fa-building-shield"></i>
+                <h2>Direktori IMIPAS (Lapas, Kanim &amp; Rutan)</h2>
+            </div>
+            <div class="card-grid">
+                <div class="info-card"><span>Lapas Pontianak</span><a href="https://drive.google.com/drive/u/0/folders/1oKZPK5sfInKKyLUqLZB4MhuTDzP7V3sO" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Lapas Ketapang</span><a href="https://drive.google.com/drive/folders/13eO-z1hGeVrnQowPXYoRRdWN7vesi7fL?hl=id" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Lapas Sintang</span><span class="badge-danger"><i class="fa-solid fa-triangle-exclamation"></i> Belum Mengirim</span></div>
+                <div class="info-card"><span>Kanim Putussibau</span><a href="https://drive.google.com/drive/folders/1WkNGG51nJCzfLKs4cbKIrwAotscuxLKF?hl=id" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Kanim Pontianak</span><a href="https://drive.google.com/drive/folders/14fYVQyWuArF0nSyq7oFfnoeRqxMG-vc0" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Kanim Singkawang</span><a href="https://drive.google.com/drive/folders/130jY_5cu9QSWh88e-97k5-2FsD3e14dv" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Kanim Ketapang</span><a href="https://drive.google.com/drive/folders/1XfBfhl8Bcq5CwM1fSJ7AcNmAQW9DPcF0" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Kanim Sambas</span><a href="https://drive.google.com/drive/folders/1TPXeF_BtF-qZm9Joy73bhbJdzcmgSCch" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Kanim Mempawah</span><span class="badge-danger"><i class="fa-solid fa-triangle-exclamation"></i> Belum Mengirim</span></div>
+                <div class="info-card"><span>Kanim Sanggau</span><span class="badge-danger"><i class="fa-solid fa-triangle-exclamation"></i> Belum Mengirim</span></div>
+                <div class="info-card"><span>Rutan Sanggau</span><a href="https://drive.google.com/drive/folders/1hxCfzI_i9TUuStOR8P9gwLAnx-rRJcRP?hl=id" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                <div class="info-card"><span>Rutan Sambas</span><a href="https://drive.google.com/drive/folders/1hxCfzI_i9TUuStOR8P9gwLAnx-rRJcRP?hl=id" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+            </div>
+        </section>
+
+        <!-- Form Pengguna Layanan & Website Penilaian Section -->
+        <section class="content-section" id="section-layanan">
+            <div class="section-header">
+                <i class="fa-solid fa-file-shield"></i>
+                <h2>Form Pengguna Layanan &amp; Website Penilaian</h2>
+            </div>
+            <div class="service-section">
+                <div class="service-card">
+                    <h3><i class="fa-solid fa-file-lines"></i> Formulir untuk Masyarakat</h3>
+                    <p>Formulir pengaduan khusus pengguna layanan terkait standar pelayanan dan pengaduan maladministrasi instansi penyelenggara.</p>
+                    <div style="display: flex; gap: 10px; margin-top: auto;">
+                        <a href="https://forms.gle/JrwZu3cwGRQgG2tz9" target="_blank" class="link-btn" style="flex:1; justify-content:center;"><i class="fa-solid fa-folder-open"></i> Buka Form</a>
+                        <button onclick="copyToClipboard('https://forms.gle/JrwZu3cwGRQgG2tz9')" class="link-btn secondary"><i class="fa-solid fa-copy"></i> Salin</button>
+                    </div>
+                </div>
+
+                <div class="service-card green">
+                    <h3><i class="fa-solid fa-award"></i> Website Penilaian</h3>
+                    <p>Situs resmi untuk pemantauan dan penilaian tingkat kepatuhan penyelenggaraan pelayanan publik.</p>
+                    <div style="margin-top: auto;">
+                        <a href="https://penilaian.ombudsman.go.id/" target="_blank" class="link-btn green" style="width:100%; justify-content:center; background-color: var(--success-bg); color: var(--success);"><i class="fa-solid fa-folder-open"></i> Buka Website</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Perwakilan Ombudsman RI Provinsi Kalimantan Barat</p>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast">Link berhasil disalin ke clipboard!</div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById("toast");
+                toast.className = "show";
+                setTimeout(() => { toast.className = ""; }, 3000);
+            }).catch(err => {
+                alert('Gagal menyalin link');
+            });
+        }
+
+        function filterContent() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            
+            // Filter PEMDA table rows
+            const pemdaRows = document.querySelectorAll('#pemdaTable tbody tr');
+            pemdaRows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(input) ? '' : 'none';
+            });
+
+            // Filter grid cards (Polres, Kantah, Imipas)
+            const cards = document.querySelectorAll('.info-card');
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(input) ? 'flex' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
