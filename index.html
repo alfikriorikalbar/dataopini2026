@@ -20,6 +20,8 @@
             --danger-bg: #fef2f2;
             --success: #16a34a;
             --success-bg: #f0fdf4;
+            --badge-team: #e0e7ff;
+            --badge-team-text: #3730a3;
         }
 
         * {
@@ -35,25 +37,26 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
 
         header {
             background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
             color: #ffffff;
-            padding: 40px 20px;
+            padding: 35px 16px;
             text-align: center;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
         }
 
         header h1 {
-            font-size: clamp(22px, 4vw, 32px);
+            font-size: clamp(20px, 4vw, 30px);
             font-weight: 800;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             letter-spacing: -0.5px;
         }
 
         header p {
-            font-size: clamp(16px, 2.5vw, 20px);
+            font-size: clamp(14px, 2.2vw, 18px);
             color: #c7d2fe;
             font-weight: 800;
             letter-spacing: -0.3px;
@@ -63,28 +66,41 @@
             max-width: 1400px;
             width: 100%;
             margin: 0 auto;
-            padding: 28px 16px;
+            padding: 20px 12px;
             display: grid;
-            gap: 24px;
+            gap: 20px;
         }
 
         .filter-section {
             background: var(--surface);
-            padding: 20px 24px;
+            padding: 16px;
             border-radius: 14px;
             border: 1px solid var(--border);
             display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 12px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        @media(min-width: 768px) {
+            .filter-section {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px 24px;
+            }
         }
 
         .search-box {
             position: relative;
-            flex: 1;
-            min-width: 280px;
+            width: 100%;
+        }
+
+        @media(min-width: 768px) {
+            .search-box {
+                flex: 1;
+                min-width: 280px;
+            }
         }
 
         .search-box i {
@@ -101,7 +117,7 @@
             padding: 12px 16px 12px 46px;
             border-radius: 10px;
             border: 1px solid var(--border);
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
             outline: none;
             background: #f8fafc;
@@ -115,18 +131,18 @@
 
         .quick-nav {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
         }
 
         .nav-chip {
             background: #e0e7ff;
             color: var(--accent);
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: 20px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 12px;
             transition: all 0.2s;
         }
 
@@ -139,49 +155,119 @@
             background: var(--surface);
             border-radius: 14px;
             border: 1px solid var(--border);
-            padding: 24px;
+            padding: 16px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        @media(min-width: 768px) {
+            .content-section {
+                padding: 24px;
+            }
         }
 
         .section-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
             border-bottom: 2px solid #f1f5f9;
         }
 
         .section-header i {
-            font-size: 22px;
+            font-size: 20px;
             color: var(--accent);
             background: #e0e7ff;
-            padding: 10px;
+            padding: 8px;
             border-radius: 8px;
         }
 
         .section-header h2 {
-            font-size: 20px;
+            font-size: 17px;
             font-weight: 800;
             color: var(--primary);
         }
 
+        @media(min-width: 768px) {
+            .section-header h2 {
+                font-size: 20px;
+            }
+        }
+
+        /* PEMDA Mobile Cards */
+        .pemda-mobile-container {
+            display: grid;
+            gap: 14px;
+        }
+
+        .pemda-card {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .pemda-card-title {
+            font-weight: 800;
+            font-size: 15px;
+            color: var(--primary);
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pemda-items-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .pemda-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            background: #ffffff;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .pemda-item label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
         .table-responsive {
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+            display: none;
+        }
+
+        @media(min-width: 992px) {
+            .pemda-mobile-container {
+                display: none;
+            }
+            .table-responsive {
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+            }
         }
 
         .data-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 15px;
+            font-size: 14px;
             text-align: left;
-            white-space: nowrap;
         }
 
         .data-table th, .data-table td {
-            padding: 14px 16px;
+            padding: 12px 14px;
             border-bottom: 1px solid var(--border);
             vertical-align: middle;
         }
@@ -190,51 +276,212 @@
             background-color: #f8fafc;
             color: var(--primary);
             font-weight: 800;
-            font-size: 15px;
         }
 
         .data-table tr:hover {
             background-color: #fbfcfe;
         }
 
+        /* Grid Kartu Instansi Lainnya (Polres, Kantah, Imipas) */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            gap: 14px;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        @media(min-width: 576px) {
+            .card-grid {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 12px;
+            }
         }
 
         .info-card {
             background: #f8fafc;
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 14px 18px;
+            padding: 12px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .info-card span {
             font-weight: 700;
             color: var(--primary);
-            font-size: 15px;
+            font-size: 14px;
             flex: 1;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
-        /* KESERAGAMAN MUTLAK UKURAN, BENTUK, DAN LEBAR TOMBOL & BADGE */
+        /* JADWAL TIMELINE STYLES */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        @media(min-width: 768px) {
+            .schedule-grid {
+                grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+                gap: 16px;
+            }
+        }
+
+        .schedule-card {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: all 0.2s;
+        }
+
+        .schedule-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .schedule-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+
+        .schedule-no {
+            background: var(--accent);
+            color: white;
+            font-weight: 800;
+            font-size: 12px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .schedule-location {
+            font-weight: 800;
+            font-size: 16px;
+            color: var(--primary);
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .schedule-date {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent);
+            background: #e0e7ff;
+            padding: 4px 8px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Tombol Buka Jadwal Hijau untuk Provinsi */
+        .schedule-btn-green {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--success);
+            background: var(--success-bg);
+            border: 1px solid #bbf7d0;
+            padding: 5px 10px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .schedule-btn-green:hover {
+            background: var(--success);
+            color: white;
+        }
+
+        .schedule-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 13px;
+        }
+
+        .schedule-row-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .schedule-label {
+            font-weight: 700;
+            color: var(--text-muted);
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .team-badges {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .team-badge {
+            background: var(--badge-team);
+            color: var(--badge-team-text);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .pj-badge {
+            background: #fef3c7;
+            color: #d97706;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #fde68a;
+        }
+
+        .schedule-notes {
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #92400e;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* TOMBOL & BADGE UMUM */
         .link-btn, .badge-danger {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            height: 38px;
-            min-width: 130px;
-            padding: 0 14px;
+            gap: 6px;
+            height: 36px;
+            min-width: 110px;
+            padding: 0 10px;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             text-decoration: none;
             border: 1px solid transparent;
@@ -265,7 +512,6 @@
             color: white;
         }
 
-        /* Badge Belum Mengirim (Warna merah tegas untuk teks dan ikon) */
         .badge-danger {
             background-color: var(--danger-bg);
             color: var(--danger) !important;
@@ -279,18 +525,24 @@
 
         .service-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        @media(min-width: 768px) {
+            .service-section {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
         }
 
         .service-card {
             background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
             border: 1px solid #ddd6fe;
             border-radius: 14px;
-            padding: 24px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
         .service-card.green {
@@ -299,18 +551,18 @@
         }
 
         .service-card h3 {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 800;
             color: var(--primary);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .service-card p {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--text-main);
-            line-height: 1.5;
+            line-height: 1.4;
             font-weight: 500;
         }
 
@@ -318,26 +570,26 @@
             background: var(--primary);
             color: #94a3b8;
             text-align: center;
-            padding: 24px;
-            font-size: 14px;
+            padding: 20px;
+            font-size: 13px;
             font-weight: 600;
             margin-top: auto;
         }
 
         #toast {
             visibility: hidden;
-            min-width: 250px;
+            min-width: 220px;
             background-color: var(--primary);
             color: #fff;
             text-align: center;
             border-radius: 10px;
-            padding: 14px 20px;
+            padding: 12px 16px;
             position: fixed;
             z-index: 1000;
             left: 50%;
-            bottom: 30px;
+            bottom: 20px;
             transform: translateX(-50%);
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
@@ -348,10 +600,10 @@
         }
 
         @keyframes fadeInOut {
-            0% { opacity: 0; bottom: 15px; }
-            15% { opacity: 1; bottom: 30px; }
-            85% { opacity: 1; bottom: 30px; }
-            100% { opacity: 0; bottom: 15px; }
+            0% { opacity: 0; bottom: 10px; }
+            15% { opacity: 1; bottom: 20px; }
+            85% { opacity: 1; bottom: 20px; }
+            100% { opacity: 0; bottom: 10px; }
         }
     </style>
 </head>
@@ -367,7 +619,7 @@
         <div class="filter-section">
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="searchInput" placeholder="Cari instansi, wilayah, atau sektor..." onkeyup="filterContent()">
+                <input type="text" id="searchInput" placeholder="Cari instansi, wilayah, atau jadwal..." onkeyup="filterContent()">
             </div>
             <div class="quick-nav">
                 <a href="#section-pemda" class="nav-chip">PEMDA</a>
@@ -375,15 +627,154 @@
                 <a href="#section-kantah" class="nav-chip">KANTAH</a>
                 <a href="#section-imipas" class="nav-chip">IMIPAS</a>
                 <a href="#section-layanan" class="nav-chip">Form &amp; Website</a>
+                <a href="#section-jadwal" class="nav-chip">Jadwal</a>
             </div>
         </div>
 
-        <!-- PEMDA Section -->
         <section class="content-section" id="section-pemda">
             <div class="section-header">
                 <i class="fa-solid fa-landmark"></i>
                 <h2>Pemerintah Daerah (PEMDA)</h2>
             </div>
+
+            <div class="pemda-mobile-container" id="pemdaMobileList">
+                <div class="pemda-card">
+                    <div class="pemda-card-title"><i class="fa-solid fa-map-pin"></i> Pemprov Kalbar</div>
+                    <div class="pemda-items-grid">
+                        <div class="pemda-item"><label>Disdik</label><a href="https://drive.google.com/drive/folders/1AGLjiUrj3t0URrnkLoayl3C43BOsIF2j" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>Dinsos</label><a href="https://drive.google.com/drive/u/0/folders/1kIiNjZCpfMVMfg3GcUTGGMHGhi2Sl-OV" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>PUPR</label><a href="https://drive.google.com/drive/u/0/folders/1FlH4DwhJXwcqf9d_WwudNa37g-r1Jmst" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>RSUD</label><a href="https://drive.google.com/drive/folders/1DmjKkqMbmCJwW6YevuPfZiV_JU5XtNHD" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                    </div>
+                </div>
+                <div class="pemda-card">
+                    <div class="pemda-card-title"><i class="fa-solid fa-map-pin"></i> Pemkot Pontianak</div>
+                    <div class="pemda-items-grid">
+                        <div class="pemda-item"><label>Disdik</label><a href="https://drive.google.com/drive/folders/1xeJw9BxyEpl1if_ixp50u0jmYF81cBry" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>Dinsos</label><a href="https://drive.google.com/drive/folders/1Z6oxtU1M1UIIcEmpalRkcDuNwX-jMwIQ" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>PUPR</label><a href="https://drive.google.com/drive/folders/1ymvipmOXRo9ope5ik5pg7uHJnqCAqlTX" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>RSUD</label><a href="https://drive.google.com/drive/folders/1yDyakjg8Y8i0AXNKmfJs6UmU3yMA6fpS" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                    </div>
+                </div>
+                <div class="pemda-card">
+                    <div class="pemda-card-title"><i class="fa-solid fa-map-pin"></i> Pemkot Singkawang</div>
+                    <div class="pemda-items-grid">
+                        <div class="pemda-item"><label>Disdik</label><a href="https://drive.google.com/drive/folders/1s_wdjstGDWd9n8Xf3ce7MXvIpiHMaqlG" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>Dinsos</label><a href="https://drive.google.com/drive/folders/10zrJYp69EmpD8z5tOmilMM5HxrNBjfNe" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>PUPR</label><a href="https://drive.google.com/drive/folders/1BS9XVSyCRBkBOCX5nluOELkb3tdeYV8a" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>RSUD</label><a href="https://drive.google.com/drive/folders/1AtUZcPe46OV4p6ECTOigB7_pQ4R3Pa6K" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                    </div>
+                </div>
+                <div class="pemda-card">
+                    <div class="pemda-card-title"><i class="fa-solid fa-map-pin"></i> Pemda Kubu Raya</div>
+                    <div class="pemda-items-grid">
+                        <div class="pemda-item"><label>Disdik</label><a href="https://drive.google.com/drive/folders/1AtUZcPe46OV4p6ECTOigB7_pQ4R3Pa6K" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>Dinsos</label><a href="https://drive.google.com/drive/folders/1AtUZcPe46OV4p6ECTOigB7_pQ4R3Pa6K" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>PUPR</label><a href="https://drive.google.com/drive/folders/1MW9nnyhg3NTEA2QTBlGv-3R_lCRFq89F" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>RSUD</label><a href="https://docs.google.com/spreadsheets/d/17qv1G8I1vc6KbtDVHJmcJKOhpX9oMBO_/edit" target="_blank" class="link-btn secondary"><i class="fa-solid fa-file-excel"></i> Sheet</a></div>
+                    </div>
+                </div>
+                <div class="pemda-card">
+                    <div class="pemda-card-title"><i class="fa-solid fa-map-pin"></i> Pemda Mempawah</div>
+                    <div class="pemda-items-grid">
+                        <div class="pemda-item"><label>Disdik</label><a href="https://drive.google.com/drive/folders/1oR3ZSpg-uG_8lCS76IkDf9TOyJbCAHdM" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>Dinsos</label><a href="https://drive.google.com/drive/folders/1NT8AaM-6hCOrv0HpfbctzZy-PaLZDc-Y" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>PUPR</label><a href="https://drive.google.com/drive/folders/1NT8AaM-6hCOrv0HpfbctzZy-PaLZDc-Y" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>RSUD</label><a href="https://drive.google.com/drive/folders/1NT8AaM-6hCOrv0HpfbctzZy-PaLZDc-Y" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                    </div>
+                </div>
+                <div class="pemda-card">
+                    <div class="pemda-card-title"><i class="fa-solid fa-map-pin"></i> Pemda Sambas</div>
+                    <div class="pemda-items-grid">
+                        <div class="pemda-item"><label>Disdik</label><a href="https://drive.google.com/drive/folders/1Q7EnMMQnLhgJHKN5Fm3kQpx7mAjCle9I" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>Dinsos</label><a href="https://drive.google.com/drive/folders/11oQcCG-IGDsEuTCsdX_xO2DknUMxvDXC" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>PUPR</label><a href="https://drive.google.com/drive/folders/1CNoaSGwvcmOpclbqCOuK91rGF3Z9LOiI" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>RSUD</label><a href="https://drive.google.com/drive/folders/18NMfk5qtr_qOfbPPg_zU9iEFV3wZx-hV" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                    </div>
+                </div>
+                <div class="pemda-card">
+                    <div class="pemda-card-title"><i class="fa-solid fa-map-pin"></i> Pemda Landak</div>
+                    <div class="pemda-items-grid">
+                        <div class="pemda-item"><label>Disdik</label><a href="https://drive.google.com/drive/folders/14ark4-vF1lVNqXlaYZXnacSRE4xfqoFx" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>Dinsos</label><a href="https://drive.google.com/drive/folders/1_6DJqJBl8k0-NdbOJnrS3W3B13YDAEhU" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>PUPR</label><a href="https://drive.google.com/drive/folders/19Nl_ODtC0eDVOuwnI-LF-suL6qOYLzq" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>RSUD</label><a href="https://drive.google.com/drive/u/0/folders/1EZ_j2f1SNXiZW17GVz8WkLxEr31PzrNT" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                    </div>
+                </div>
+                <div class="pemda-card">
+                    <div class="pemda-card-title"><i class="fa-solid fa-map-pin"></i> Pemda Bengkayang</div>
+                    <div class="pemda-items-grid">
+                        <div class="pemda-item"><label>Disdik</label><a href="https://drive.google.com/drive/folders/1jINtibZYTUuYOMrhvjlxKqgnNgRJK4r7" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>Dinsos</label><a href="https://drive.google.com/drive/folders/1EGmZ2r9qUcUTw5SrHtUsXhR56Ba3_t48" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>PUPR</label><a href="https://drive.google.com/drive/folders/1HjaLKpUXTC8_QDSvTlZexhPalVtTlLHS" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>RSUD</label><a href="https://drive.google.com/drive/folders/15dqFo1d75f_ZXg-n9ajIppjdwQVWhwPr" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                    </div>
+                </div>
+                <div class="pemda-card">
+                    <div class="pemda-card-title"><i class="fa-solid fa-map-pin"></i> Pemda Ketapang</div>
+                    <div class="pemda-items-grid">
+                        <div class="pemda-item"><label>Disdik</label><a href="https://drive.google.com/drive/u/0/folders/12k7Gi6I17tToFu_utIfJWqi118KKy5YR" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>Dinsos</label><a href="https://drive.google.com/drive/folders/1TR5TlW3AphV8LcJafPPnlLXamTO6eiqO" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>PUPR</label><a href="https://drive.google.com/drive/folders/18bCSPZMoHYIOQcM1BQMTaYyN8SgsoxGn" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>RSUD</label><a href="https://drive.google.com/drive/folders/1c8otsBuNmQ4iKsa8KdmdLVQiaP5GeUh0" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                    </div>
+                </div>
+                <div class="pemda-card">
+                    <div class="pemda-card-title"><i class="fa-solid fa-map-pin"></i> Pemda Kayong Utara</div>
+                    <div class="pemda-items-grid">
+                        <div class="pemda-item"><label>Disdik</label><a href="https://drive.google.com/drive/folders/1p2gnz7hfgCdeZX0P8mmlLH786QR6x1zC" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>Dinsos</label><a href="https://drive.google.com/drive/folders/1m5d2cxB78DSJIh4LjBGC7M8UO5CArJqz" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>PUPR</label><a href="https://drive.google.com/drive/folders/1FlbPcRh2dChyz5RWti7RZk75K_CdZ6s3" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>RSUD</label><a href="https://drive.google.com/drive/folders/1MPufTFd_sxCCO8JQri36qncAhUk-_1rz" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                    </div>
+                </div>
+                <div class="pemda-card">
+                    <div class="pemda-card-title"><i class="fa-solid fa-map-pin"></i> Pemda Melawi</div>
+                    <div class="pemda-items-grid">
+                        <div class="pemda-item"><label>Disdik</label><a href="https://drive.google.com/drive/u/0/folders/19s9l_sJeirRgVo51UB4wiWbuG-14rGcb" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>Dinsos</label><span class="badge-danger"><i class="fa-solid fa-triangle-exclamation"></i> Belum Mengirim</span></div>
+                        <div class="pemda-item"><label>PUPR</label><span class="badge-danger"><i class="fa-solid fa-triangle-exclamation"></i> Belum Mengirim</span></div>
+                        <div class="pemda-item"><label>RSUD</label><a href="https://drive.google.com/drive/u/0/folders/1C3lGEHZlfXgk45O1qq4k0rufezLeA4rY" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                    </div>
+                </div>
+                <div class="pemda-card">
+                    <div class="pemda-card-title"><i class="fa-solid fa-map-pin"></i> Pemda Sanggau</div>
+                    <div class="pemda-items-grid">
+                        <div class="pemda-item"><label>Disdik</label><a href="https://drive.google.com/drive/u/0/folders/1vl6czQ8zYyrZf9emKGNknA4TrlFMhCAI" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>Dinsos</label><a href="https://drive.google.com/drive/u/0/folders/1x2OyIGFXeI7bB-xaVm_UYvRN-Vcpv4FH" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>PUPR</label><a href="https://drive.google.com/drive/folders/1ulnITGdSh-ioGVAFOV0PSn0UYkbVw--t" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>RSUD</label><a href="https://docs.google.com/spreadsheets/d/1C82wGkLbzhJi49p6I4TrHyL5JAIcr_dM/edit" target="_blank" class="link-btn secondary"><i class="fa-solid fa-file-excel"></i> Sheet</a></div>
+                    </div>
+                </div>
+                <div class="pemda-card">
+                    <div class="pemda-card-title"><i class="fa-solid fa-map-pin"></i> Pemda Sekadau</div>
+                    <div class="pemda-items-grid">
+                        <div class="pemda-item"><label>Disdik</label><span class="badge-danger"><i class="fa-solid fa-triangle-exclamation"></i> Belum Mengirim</span></div>
+                        <div class="pemda-item"><label>Dinsos</label><a href="https://drive.google.com/drive/folders/1ArdDDu5-3gj-Kqpf9f1esj1n522zsXTU" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>PUPR</label><a href="https://drive.google.com/drive/folders/1e95H7no3FXz0I3h5qKD_7vyZSfJLdRqx" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>RSUD</label><a href="https://drive.google.com/drive/u/0/folders/1IQRNAXxZEjswKqy3BDeQouj8GWs-Rfo1" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                    </div>
+                </div>
+                <div class="pemda-card">
+                    <div class="pemda-card-title"><i class="fa-solid fa-map-pin"></i> Pemda Sintang</div>
+                    <div class="pemda-items-grid">
+                        <div class="pemda-item"><label>Disdik</label><a href="https://drive.google.com/drive/u/0/folders/1gnmMKvY8WRqAaocrRDodViB_pulQg5yV" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>Dinsos</label><a href="https://drive.google.com/drive/folders/1yfGfbQ4AfTeqeop3CZN5ZX45HKvelYgX" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>PUPR</label><a href="https://drive.google.com/drive/folders/1GKxQKzIyRQNUThR7-Dozf0jihSwnc4FM" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>RSUD</label><a href="https://drive.google.com/drive/u/0/folders/18OtDX_3iK2D145kPsKCHzqaXvdEyCpJE" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                    </div>
+                </div>
+                <div class="pemda-card">
+                    <div class="pemda-card-title"><i class="fa-solid fa-map-pin"></i> Pemda Kapuas Hulu</div>
+                    <div class="pemda-items-grid">
+                        <div class="pemda-item"><label>Disdik</label><a href="https://drive.google.com/drive/u/0/folders/1dtopNZxOT9RblgO1EYQf4UcnnzQLFN7O" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>Dinsos</label><a href="https://drive.google.com/drive/folders/1lCG88Q4aDf07MpLicxt3dIO6m4CVRskU" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>PUPR</label><a href="https://drive.google.com/drive/u/0/folders/1kRY44wKHbKe4dee2xQlsflc5QSZyQ_Ig" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                        <div class="pemda-item"><label>RSUD</label><a href="https://drive.google.com/drive/u/0/folders/1RSt1qOxASkiioMfnGHxZ12vbX4SkxbyE" target="_blank" class="link-btn"><i class="fa-solid fa-folder-open"></i> Buka</a></div>
+                    </div>
+                </div>
+            </div>
+
             <div class="table-responsive">
                 <table class="data-table" id="pemdaTable">
                     <thead>
@@ -506,7 +897,6 @@
             </div>
         </section>
 
-        <!-- POLRES Section -->
         <section class="content-section" id="section-polres">
             <div class="section-header">
                 <i class="fa-solid fa-shield-halved"></i>
@@ -530,7 +920,6 @@
             </div>
         </section>
 
-        <!-- KANTAH Section -->
         <section class="content-section" id="section-kantah">
             <div class="section-header">
                 <i class="fa-solid fa-map-location-dot"></i>
@@ -554,7 +943,6 @@
             </div>
         </section>
 
-        <!-- IMIPAS Section -->
         <section class="content-section" id="section-imipas">
             <div class="section-header">
                 <i class="fa-solid fa-building-shield"></i>
@@ -576,7 +964,6 @@
             </div>
         </section>
 
-        <!-- Form Pengguna Layanan & Website Penilaian Section -->
         <section class="content-section" id="section-layanan">
             <div class="section-header">
                 <i class="fa-solid fa-file-shield"></i>
@@ -602,13 +989,335 @@
             </div>
         </section>
 
+        <section class="content-section" id="section-jadwal">
+            <div class="section-header">
+                <i class="fa-solid fa-calendar-days"></i>
+                <h2>Jadwal Kegiatan Dinas (Agustus - November 2026)</h2>
+            </div>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+                Jadwal pelaksanaan kegiatan berdasarkan wilayah, periode, tim pelaksana, penanggung jawab (PJ), dan keterangan khusus.
+            </p>
+            <div class="schedule-grid" id="scheduleGrid">
+                
+                <div class="schedule-card" data-search="kubu raya 18-21 agustus 2026 rd hn">
+                    <div class="schedule-header-row">
+                        <div style="display: flex; align-items: center;">
+                            <div class="schedule-no">1</div>
+                            <div class="schedule-location">Kubu Raya</div>
+                        </div>
+                        <div class="schedule-date"><i class="fa-regular fa-calendar"></i> 18–21 Agustus 2026</div>
+                    </div>
+                    <div class="schedule-details">
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Tim Pelaksana</span>
+                            <div class="team-badges"><span class="team-badge">RD</span><span class="team-badge">FN</span><span class="team-badge">HN</span></div>
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Penanggung Jawab (PJ)</span>
+                            <span class="pj-badge">HN</span>
+                        </div>
+                        <div class="schedule-notes"><i class="fa-solid fa-circle-info"></i> Tidak pakai mobil</div>
+                    </div>
+                </div>
+
+                <div class="schedule-card" data-search="provinsi kalbar 26-28 agustus 2026 al all pc">
+                    <div class="schedule-header-row">
+                        <div style="display: flex; align-items: center;">
+                            <div class="schedule-no">2</div>
+                            <div class="schedule-location">Provinsi Kalbar</div>
+                        </div>
+                        <a href="https://docs.google.com/document/d/1z--VOZQ5WebYvvmZWgaoRj5gJniBJJtQwtPoYSr_yq8/edit?tab=t.0" target="_blank" class="schedule-btn-green"><i class="fa-solid fa-calendar-check"></i> Buka Jadwal</a>
+                    </div>
+                    <div class="schedule-details">
+                        <div style="font-size: 12px; font-weight: 700; color: var(--accent); background: #e0e7ff; padding: 4px 8px; border-radius: 6px; display: inline-flex; align-items: center; gap: 5px; width: fit-content;">
+                            <i class="fa-regular fa-calendar"></i> 26–28 Agustus 2026
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Tim Pelaksana</span>
+                            <div class="team-badges"><span class="team-badge" style="background:#fee2e2; color:#991b1b;">ALL PC</span></div>
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Penanggung Jawab (PJ)</span>
+                            <span class="pj-badge">AL</span>
+                        </div>
+                        <div class="schedule-notes"><i class="fa-solid fa-circle-info"></i> Tidak pakai mobil</div>
+                    </div>
+                </div>
+
+                <div class="schedule-card" data-search="landak 31 agustus - 4 september 2026 rd">
+                    <div class="schedule-header-row">
+                        <div style="display: flex; align-items: center;">
+                            <div class="schedule-no">3</div>
+                            <div class="schedule-location">Landak</div>
+                        </div>
+                        <div class="schedule-date"><i class="fa-regular fa-calendar"></i> 31 Agt–4 Sep 2026</div>
+                    </div>
+                    <div class="schedule-details">
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Tim Pelaksana</span>
+                            <div class="team-badges"><span class="team-badge">RD</span><span class="team-badge">AL</span><span class="team-badge">FN</span></div>
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Penanggung Jawab (PJ)</span>
+                            <span class="pj-badge">RD</span>
+                        </div>
+                        <div class="schedule-notes"><i class="fa-solid fa-circle-info"></i> HN ganti AL</div>
+                    </div>
+                </div>
+
+                <div class="schedule-card" data-search="mempawah 7-10 september 2026 hn">
+                    <div class="schedule-header-row">
+                        <div style="display: flex; align-items: center;">
+                            <div class="schedule-no">4</div>
+                            <div class="schedule-location">Mempawah</div>
+                        </div>
+                        <div class="schedule-date"><i class="fa-regular fa-calendar"></i> 7–10 Sep 2026</div>
+                    </div>
+                    <div class="schedule-details">
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Tim Pelaksana</span>
+                            <div class="team-badges"><span class="team-badge">AL</span><span class="team-badge">HN</span><span class="team-badge">DN</span></div>
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Penanggung Jawab (PJ)</span>
+                            <span class="pj-badge">HN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-card" data-search="singkawang 14-18 september 2026 rd">
+                    <div class="schedule-header-row">
+                        <div style="display: flex; align-items: center;">
+                            <div class="schedule-no">5</div>
+                            <div class="schedule-location">Singkawang</div>
+                        </div>
+                        <div class="schedule-date"><i class="fa-regular fa-calendar"></i> 14–18 Sep 2026</div>
+                    </div>
+                    <div class="schedule-details">
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Tim Pelaksana</span>
+                            <div class="team-badges"><span class="team-badge">RD</span><span class="team-badge">AL</span><span class="team-badge">HN</span><span class="team-badge">DN</span></div>
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Penanggung Jawab (PJ)</span>
+                            <span class="pj-badge">RD</span>
+                        </div>
+                        <div class="schedule-notes"><i class="fa-solid fa-circle-info"></i> FN ganti HN</div>
+                    </div>
+                </div>
+
+                <div class="schedule-card" data-search="kapuas hulu 20-25 september 2026 rd">
+                    <div class="schedule-header-row">
+                        <div style="display: flex; align-items: center;">
+                            <div class="schedule-no">6</div>
+                            <div class="schedule-location">Kapuas Hulu</div>
+                        </div>
+                        <div class="schedule-date"><i class="fa-regular fa-calendar"></i> 20–25 Sep 2026</div>
+                    </div>
+                    <div class="schedule-details">
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Tim Pelaksana</span>
+                            <div class="team-badges"><span class="team-badge">RD</span><span class="team-badge">AL</span><span class="team-badge">FN</span><span class="team-badge">DN</span></div>
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Penanggung Jawab (PJ)</span>
+                            <span class="pj-badge">RD</span>
+                        </div>
+                        <div class="schedule-notes"><i class="fa-solid fa-circle-info"></i> HN ganti AL, Supervisi Mempawah</div>
+                    </div>
+                </div>
+
+                <div class="schedule-card" data-search="pontianak 28 september - 2 oktober 2026 hn">
+                    <div class="schedule-header-row">
+                        <div style="display: flex; align-items: center;">
+                            <div class="schedule-no">7</div>
+                            <div class="schedule-location">Pontianak</div>
+                        </div>
+                        <div class="schedule-date"><i class="fa-regular fa-calendar"></i> 28 Sep–2 Okt 2026</div>
+                    </div>
+                    <div class="schedule-details">
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Tim Pelaksana</span>
+                            <div class="team-badges"><span class="team-badge" style="background:#fee2e2; color:#991b1b;">ALL PC</span></div>
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Penanggung Jawab (PJ)</span>
+                            <span class="pj-badge">HN</span>
+                        </div>
+                        <div class="schedule-notes"><i class="fa-solid fa-circle-info"></i> Supervisi Singkawang</div>
+                    </div>
+                </div>
+
+                <div class="schedule-card" data-search="sintang 5-9 oktober 2026 fn">
+                    <div class="schedule-header-row">
+                        <div style="display: flex; align-items: center;">
+                            <div class="schedule-no">8</div>
+                            <div class="schedule-location">Sintang</div>
+                        </div>
+                        <div class="schedule-date"><i class="fa-regular fa-calendar"></i> 5–9 Okt 2026</div>
+                    </div>
+                    <div class="schedule-details">
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Tim Pelaksana</span>
+                            <div class="team-badges"><span class="team-badge">RD</span><span class="team-badge">AL</span><span class="team-badge">FN</span><span class="team-badge">DN</span></div>
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Penanggung Jawab (PJ)</span>
+                            <span class="pj-badge">FN</span>
+                        </div>
+                        <div class="schedule-notes"><i class="fa-solid fa-circle-info"></i> HN-DN</div>
+                    </div>
+                </div>
+
+                <div class="schedule-card" data-search="kayong utara 12-17 oktober 2026 dn">
+                    <div class="schedule-header-row">
+                        <div style="display: flex; align-items: center;">
+                            <div class="schedule-no">9</div>
+                            <div class="schedule-location">Kayong Utara</div>
+                        </div>
+                        <div class="schedule-date"><i class="fa-regular fa-calendar"></i> 12–17 Okt 2026</div>
+                    </div>
+                    <div class="schedule-details">
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Tim Pelaksana</span>
+                            <div class="team-badges"><span class="team-badge">RD</span><span class="team-badge">AL</span><span class="team-badge">FN</span><span class="team-badge">DN</span></div>
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Penanggung Jawab (PJ)</span>
+                            <span class="pj-badge">DN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-card" data-search="ketapang 19-23 oktober 2026 dn">
+                    <div class="schedule-header-row">
+                        <div style="display: flex; align-items: center;">
+                            <div class="schedule-no">10</div>
+                            <div class="schedule-location">Ketapang</div>
+                        </div>
+                        <div class="schedule-date"><i class="fa-regular fa-calendar"></i> 19–23 Okt 2026</div>
+                    </div>
+                    <div class="schedule-details">
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Tim Pelaksana</span>
+                            <div class="team-badges"><span class="team-badge">RD</span><span class="team-badge">AL</span><span class="team-badge">FN</span><span class="team-badge">DN</span></div>
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Penanggung Jawab (PJ)</span>
+                            <span class="pj-badge">DN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-card" data-search="bengkayang 26-30 oktober 2026 al">
+                    <div class="schedule-header-row">
+                        <div style="display: flex; align-items: center;">
+                            <div class="schedule-no">11</div>
+                            <div class="schedule-location">Bengkayang</div>
+                        </div>
+                        <div class="schedule-date"><i class="fa-regular fa-calendar"></i> 26–30 Okt 2026</div>
+                    </div>
+                    <div class="schedule-details">
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Tim Pelaksana</span>
+                            <div class="team-badges"><span class="team-badge">RD</span><span class="team-badge">AL</span><span class="team-badge">DN</span><span class="team-badge">HN</span></div>
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Penanggung Jawab (PJ)</span>
+                            <span class="pj-badge">AL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-card" data-search="sekadau 2-6 november 2026 fn">
+                    <div class="schedule-header-row">
+                        <div style="display: flex; align-items: center;">
+                            <div class="schedule-no">12</div>
+                            <div class="schedule-location">Sekadau</div>
+                        </div>
+                        <div class="schedule-date"><i class="fa-regular fa-calendar"></i> 2–6 Nov 2026</div>
+                    </div>
+                    <div class="schedule-details">
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Tim Pelaksana</span>
+                            <div class="team-badges"><span class="team-badge">RD</span><span class="team-badge">AL</span><span class="team-badge">FN</span><span class="team-badge">DN</span></div>
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Penanggung Jawab (PJ)</span>
+                            <span class="pj-badge">FN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-card" data-search="sambas 9-13 november 2026 dn">
+                    <div class="schedule-header-row">
+                        <div style="display: flex; align-items: center;">
+                            <div class="schedule-no">13</div>
+                            <div class="schedule-location">Sambas</div>
+                        </div>
+                        <div class="schedule-date"><i class="fa-regular fa-calendar"></i> 9–13 Nov 2026</div>
+                    </div>
+                    <div class="schedule-details">
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Tim Pelaksana</span>
+                            <div class="team-badges"><span class="team-badge">RD</span><span class="team-badge">AL</span><span class="team-badge">FN</span><span class="team-badge">DN</span></div>
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Penanggung Jawab (PJ)</span>
+                            <span class="pj-badge">DN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-card" data-search="sanggau 16-20 november 2026 fn">
+                    <div class="schedule-header-row">
+                        <div style="display: flex; align-items: center;">
+                            <div class="schedule-no">14</div>
+                            <div class="schedule-location">Sanggau</div>
+                        </div>
+                        <div class="schedule-date"><i class="fa-regular fa-calendar"></i> 16–20 Nov 2026</div>
+                    </div>
+                    <div class="schedule-details">
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Tim Pelaksana</span>
+                            <div class="team-badges"><span class="team-badge">RD</span><span class="team-badge">AL</span><span class="team-badge">FN</span><span class="team-badge">HN</span></div>
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Penanggung Jawab (PJ)</span>
+                            <span class="pj-badge">FN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-card" data-search="melawi 23-27 november 2026 al">
+                    <div class="schedule-header-row">
+                        <div style="display: flex; align-items: center;">
+                            <div class="schedule-no">15</div>
+                            <div class="schedule-location">Melawi</div>
+                        </div>
+                        <div class="schedule-date"><i class="fa-regular fa-calendar"></i> 23–27 Nov 2026</div>
+                    </div>
+                    <div class="schedule-details">
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Tim Pelaksana</span>
+                            <div class="team-badges"><span class="team-badge">RD</span><span class="team-badge">AL</span><span class="team-badge">FN</span><span class="team-badge">DN</span></div>
+                        </div>
+                        <div class="schedule-row-info">
+                            <span class="schedule-label">Penanggung Jawab (PJ)</span>
+                            <span class="pj-badge">AL</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
     </div>
 
     <footer>
         <p>&copy; 2026 Perwakilan Ombudsman RI Provinsi Kalimantan Barat</p>
     </footer>
 
-    <!-- Toast Notification -->
     <div id="toast">Link berhasil disalin ke clipboard!</div>
 
     <script>
@@ -625,7 +1334,14 @@
         function filterContent() {
             const input = document.getElementById('searchInput').value.toLowerCase();
             
-            // Filter PEMDA table rows
+            // Filter PEMDA Mobile Cards
+            const pemdaCards = document.querySelectorAll('.pemda-card');
+            pemdaCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(input) ? 'flex' : 'none';
+            });
+
+            // Filter PEMDA table rows (Desktop)
             const pemdaRows = document.querySelectorAll('#pemdaTable tbody tr');
             pemdaRows.forEach(row => {
                 const text = row.textContent.toLowerCase();
@@ -637,6 +1353,14 @@
             cards.forEach(card => {
                 const text = card.textContent.toLowerCase();
                 card.style.display = text.includes(input) ? 'flex' : 'none';
+            });
+
+            // Filter Schedule Cards
+            const scheduleCards = document.querySelectorAll('.schedule-card');
+            scheduleCards.forEach(card => {
+                const searchData = card.getAttribute('data-search') || '';
+                const text = card.textContent.toLowerCase();
+                card.style.display = (text.includes(input) || searchData.includes(input)) ? 'flex' : 'none';
             });
         }
     </script>
